@@ -1,0 +1,41 @@
+<div class="mb-4 p-8 flex items-center justify-center">
+    <p-card [style]="{ width: '25rem', overflow: 'hidden' }">
+        <ng-template #title> Ejemplo 5 de señales </ng-template>
+        <ng-template #subtitle> Calculadora simple de IVA </ng-template>
+        <p></p>
+        <p-floatlabel>
+            <input
+            pInputText
+            id="precio"
+            type="number"
+            autocomplete="off"
+            min="0"
+            oninput="validity.valid||(value=0);"
+            [value]="precio()"
+            (input)="onInputUpdate($event)"
+            />
+            <label for="precio">Precio</label>
+        </p-floatlabel>
+        <p></p>
+        <p-floatlabel>
+            <input
+            pInputText
+            id="iva"
+            type="number"
+            autocomplete="off"
+            min="0"
+            [value]="IVAEnPorcentaje()"
+            (input)="onIVAUpdate($event)"
+            />
+            <label for="iva">IVA (%)</label>
+        </p-floatlabel>
+        <div>
+            <div class="summary">
+                <p>Resumen del total</p>
+                <p>Total IVA: {{totalIva()}}</p>
+                <p>Total Precio: {{total()}}</p>
+            </div>
+        </div>
+        <p-button label="Guardar" severity="secondary" class="w-full" [outlined]="true" (onClick)="save()"/>
+    </p-card>
+</div>
